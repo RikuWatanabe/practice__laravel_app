@@ -49,7 +49,7 @@ class TodoController extends Controller
         $input = $request->all(); // ‘Token’の値と’title’の値を連想配列にして取得し、$inputへ代入。
         $input['user_id'] = Auth::id();  // 追記
         $this->todo->fill($input)->save();
-        return redirect()->to('todo');
+        return redirect()->route('todo.index');
     }
 
     /**
@@ -89,7 +89,7 @@ class TodoController extends Controller
         //
         $input = $request->all();
         $this->todo->find($id)->fill($input)->save();
-        return redirect()->to('todo');
+        return redirect()->route('todo.index');
     }
 
     /**
@@ -102,6 +102,6 @@ class TodoController extends Controller
     {
         //
         $this->todo->find($id)->delete();
-        return redirect()->to('todo');
+        return redirect()->route('todo.index');
     }
 }
